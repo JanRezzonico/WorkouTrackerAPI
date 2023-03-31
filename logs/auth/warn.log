@@ -1,0 +1,7 @@
+2023-03-31T10:54:45.475Z [ERROR] Error in user registration: User is not defined [undefined]
+2023-03-31T10:58:13.489Z [WARN] Invalid password for user jr [undefined]
+2023-03-31T11:15:40.984Z [WARN] Invalid password for user jr [undefined]
+2023-03-31T11:18:31.518Z [WARN] Invalid password for user jr [undefined]
+2023-03-31T12:15:53.444Z [ERROR] Error in user registration: User validation failed: weight: Path `weight` is required., height: Path `height` is required., birthday: Path `birthday` is required., last_name: Path `last_name` is required., first_name: Path `first_name` is required. [undefined]
+2023-03-31T12:17:44.230Z [ERROR] Error in user registration: User validation failed: weight: Path `weight` is required., height: Path `height` is required., birthday: Path `birthday` is required., last_name: Path `last_name` is required., first_name: Path `first_name` is required. [undefined]
+2023-03-31T12:18:27.756Z [ERROR] Error in user registration: User validation failed: weight: Path `weight` is required., height: Path `height` is required., birthday: Path `birthday` is required., last_name: Path `last_name` is required., first_name: Path `first_name` is required. [undefined]
