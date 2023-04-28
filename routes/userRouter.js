@@ -21,7 +21,8 @@ const LOG = winston.createLogger({
         }),
         new winston.transports.File({
             filename: 'logs/user/combined.log'
-        })
+        }),
+        new winston.transports.Console()
     ]
 });
 
@@ -43,7 +44,6 @@ userRouter.get('/:id', async (req, res) => {
     LOG.info(`Get user request received for ${req.params.id}`);
     try {
         const user = await User.findById(req.params.id);
-        console.log(user);
         if (user) { // User found
             LOG.info(`Sent user ${user._id}`);
             return res.json(user);

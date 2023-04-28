@@ -6,16 +6,40 @@ const mongoString = process.env.DATABASE_URL;
 const authRouter = require('./routes/authRouter');
 const sessionRouter = require('./routes/sessionRouter');
 const userRouter = require('./routes/userRouter');
+const winston = require('winston');
+
+const LOG = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json(),
+        winston.format.printf(info => `${info.timestamp} [${info.level.toUpperCase()}] ${info.message} [${info.ip}]`)
+    ),
+    transports: [
+        new winston.transports.File({
+            filename: 'logs/system/error.log',
+            level: 'error'
+        }),
+        new winston.transports.File({
+            filename: 'logs/system/warn.log',
+            level: 'warn'
+        }),
+        new winston.transports.File({
+            filename: 'logs/system/combined.log'
+        }),
+        new winston.transports.Console()
+    ]
+});
 
 mongoose.connect(mongoString);
 const database = mongoose.connection;
 
 database.on('error', (error) => {
-    console.log(error)
+    LOG.error(error);
 })
 
 database.once('connected', () => {
-    console.log('Database Connected');
+    LOG.info('Database Connected');
 })
 
 
@@ -28,5 +52,5 @@ app.use('/api/session', sessionRouter);
 app.use('/api/auth', authRouter);
 
 app.listen(3000, () => {
-    console.log(`Server Started at ${3000}`)
+    LOG.info(`Server Started at ${3000}`);
 })

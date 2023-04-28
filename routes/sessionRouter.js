@@ -21,7 +21,8 @@ const LOG = winston.createLogger({
         }),
         new winston.transports.File({
             filename: 'logs/session/combined.log'
-        })
+        }),
+        new winston.transports.Console()
     ]
 });
 
