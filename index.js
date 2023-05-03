@@ -7,6 +7,7 @@ const authRouter = require('./routes/authRouter');
 const sessionRouter = require('./routes/sessionRouter');
 const userRouter = require('./routes/userRouter');
 const winston = require('winston');
+const PORT = 3000;
 
 const LOG = winston.createLogger({
     level: 'info',
@@ -51,6 +52,6 @@ app.use('/api/user', userRouter);
 app.use('/api/session', sessionRouter);
 app.use('/api/auth', authRouter);
 
-app.listen(3000, () => {
-    LOG.info(`Server Started at ${3000}`);
+app.listen(PORT, () => {
+    LOG.info(`Server Started at ${PORT}`);
 })
