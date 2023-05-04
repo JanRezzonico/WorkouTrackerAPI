@@ -9,6 +9,10 @@ const userRouter = require('./routes/userRouter');
 const winston = require('winston');
 const PORT = 3000;
 
+const addIpToLogMeta = (req, res, next) => {
+    req.loggerMeta = { ip: req.ip };
+    next();
+};
 const LOG = winston.createLogger({
     level: 'info',
     format: winston.format.combine(
@@ -46,7 +50,7 @@ database.once('connected', () => {
 
 const app = express();
 
-
+app.use(addIpToLogMeta);
 app.use(express.json());
 app.use('/api/user', userRouter);
 app.use('/api/session', sessionRouter);

@@ -29,7 +29,7 @@ const LOG = winston.createLogger({
 
 // Route for user registration
 authRouter.post('/register', async (req, res) => {
-    LOG.info(`Registration request received for ${req.body.username}`);
+    LOG.info(`Registration request received for ${req.body.username}`, {ip: req.ip});
     try {
         // Get the user input from the request body
         const { username, password } = req.body;
@@ -67,7 +67,7 @@ authRouter.post('/register', async (req, res) => {
 
 // Route for user login
 authRouter.post('/login', async (req, res) => {
-    LOG.info(`Login request received for ${req.body.username}`);
+    LOG.info(`Login request received for ${req.body.username}`, {ip: req.ip});
     try {
         // Get the user input from the request body
         const { username, password } = req.body;
