@@ -15,10 +15,6 @@ const setSchema = new mongoose.Schema({
 });
 
 const exerciseSchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
     name: {
         type: String
     },
